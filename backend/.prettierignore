@@ -1,0 +1,16 @@
+
+*.env 
+*.log 
+*.md 
+*.lock 
+*.yml 
+package.json 
+package-lock.json 
+public
+.env
+.vscode
+node_modules
+build
+coverage
+
+.dist
