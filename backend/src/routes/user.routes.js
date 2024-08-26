@@ -3,7 +3,7 @@ import { upload } from '../middlewares/multer.middleware.js';
 const router = Router();
 
 
-import { loginUser, logoutUser, registerUser } from '../controller/user.controller.js';
+import { loginUser, logoutUser, refreshAccessToken, registerUser } from '../controller/user.controller.js';
 import { verifyJWT } from '../middlewares/auth.middleware.js';
 
 
@@ -36,6 +36,11 @@ router.route('/logout').post(
    logoutUser
 )
 
+
+router.route('/refresh-access-token').post(
+   upload.none(),
+   refreshAccessToken
+)
 
 
 export default router;
