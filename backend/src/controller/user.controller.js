@@ -39,6 +39,8 @@ const registerUser = asyncHandler(async (req, res) => {
    // check user already exist or not
 
    const {username, fullName, email, password, } = req.body;
+
+   console.log("req.body => ", req.body);
    
 
    if(
@@ -62,6 +64,8 @@ const registerUser = asyncHandler(async (req, res) => {
    if(!avatarLocalPath) {
       throw new ApiError(400, "Please upload avatar");
    }
+
+   console.log("avatarLocalPath => ", avatarLocalPath);
 
    const avatar = await uploadOnCloudinary(avatarLocalPath);
 
@@ -90,7 +94,7 @@ const registerUser = asyncHandler(async (req, res) => {
       "-password -refreshToken"
    )
 
-  
+
 
    console.log("createdUser => ", createdUser);
 

@@ -23,7 +23,7 @@ router.route('/register').post(
 );
 
 router.route('/login').post(
-
+   upload.none(),
    loginUser
 );
 
