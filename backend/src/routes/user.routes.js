@@ -3,7 +3,7 @@ import { upload } from '../middlewares/multer.middleware.js';
 const router = Router();
 
 
-import { loginUser, logoutUser, refreshAccessToken, registerUser } from '../controller/user.controller.js';
+import { changeCurrentPassword, getCurrentUser, getUserChannelProfile, getWatchHistory, loginUser, logoutUser, refreshAccessToken, registerUser, updateAccountDetails, updateUserAvatar, updateUserCoverImage } from '../controller/user.controller.js';
 import { verifyJWT } from '../middlewares/auth.middleware.js';
 
 
@@ -42,5 +42,47 @@ router.route('/refresh-access-token').post(
    refreshAccessToken
 )
 
+router.route("/change-current-password").post(
+   upload.none(),
+   verifyJWT,
+   changeCurrentPassword
+)
+
+router.route("/get-current-user").get(
+   upload.none(),
+   verifyJWT,
+   getCurrentUser
+)
+
+router.route("/update-account-details").patch(   
+   upload.none(),
+   verifyJWT,
+   updateAccountDetails
+)
+
+router.route("/update-user-avatar").patch(      
+   upload.single("avatar"),
+   verifyJWT,
+   updateUserAvatar
+)
+
+router.route("update-user-cover-image").patch(      
+   upload.single("coverImage"),
+   verifyJWT,
+   updateUserCoverImage
+)
+
+router.route("/get-channel/:username").get(
+   upload.none(),
+   verifyJWT,
+   getUserChannelProfile
+)
+
+
+router.route("/get-watch-history").get(
+   upload.none(),
+   verifyJWT,
+   getWatchHistory
+)
 
 export default router;
